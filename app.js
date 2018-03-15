@@ -5,13 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
+var login = require('./routes/login');
 var home = require('./routes/home');
 var addlocation = require('./routes/add_location');
 var buildings = require('./routes/buildings');
 var addbuilding = require('./routes/add_building');
 var rooms = require('./routes/rooms');
 var addroom = require('./routes/add_room');
+var l = require('./routes/login');
 
 var app = express();
 
@@ -27,13 +28,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+app.use('/', login);
 app.use('/home', home);
 app.use('/addlocation', addlocation);
 app.use('/buildings', buildings);
 app.use('/addbuilding', addbuilding);
 app.use('/rooms', rooms);
 app.use('/addroom', addroom);
+app.use('/login', l);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
