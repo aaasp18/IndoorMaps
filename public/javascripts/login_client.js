@@ -1,7 +1,7 @@
 function onSignIn(googleUser) {
- 
-  var fetchData = { 
-    method: 'POST', 
+
+  var fetchData = {
+    method: 'POST',
     body: googleUser.getAuthResponse().id_token,
     headers: new Headers()
   }
@@ -16,3 +16,4 @@ function onSignIn(googleUser) {
       window.location = redirectUrl;
     });
 }
+
