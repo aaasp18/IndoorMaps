@@ -1,6 +1,6 @@
 extends layout
 
-block head  
+block head
   script(src='https://apis.google.com/js/platform.js')
   meta(name='google-signin-client_id', content='152034815125-q5a1uo5vqaf9ki1r7f8nf41qu07qu2v8.apps.googleusercontent.com')
   meta(name='google-signin-cookiepolicy', content='single_host_origin')
@@ -10,4 +10,3 @@ block head
 block content
   h1= title
   .g-signin2(data-onsuccess='onSignIn', data-theme='white')
-    
