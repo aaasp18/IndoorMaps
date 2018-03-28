@@ -1,0 +1,32 @@
+script.
+  var auth2;
+  function loadAuth() {
+      gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({
+          client_id: '152034815125-q5a1uo5vqaf9ki1r7f8nf41qu07qu2v8.apps.googleusercontent.com',
+          scope: 'profile'
+        });
+      });
+  }
+  
+  function signOut(){
+    $.post( "/logout")
+    .done(function(data){
+      console.log(data);
+      auth2.signOut().then(function () {
+          console.log('User signed out.');
+          $( location ).attr("href", window.location.href.split('/home')[0]);
+        });
+    });
+  }
+  var scriptElement = document.createElement("script");
+  scriptElement.src = "https://apis.google.com/js/platform.js";
+  scriptElement.onload = function () {
+   console.log("loaded google auth");
+   loadAuth();
+  };
+  document.head.appendChild(scriptElement);
+
+
+  
+

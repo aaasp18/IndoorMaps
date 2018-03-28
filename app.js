@@ -4,15 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
-var login = require('./routes/login');
+var login = require('./routes/auth');
 var home = require('./routes/home');
 var addlocation = require('./routes/add_location');
 var buildings = require('./routes/buildings');
 var addbuilding = require('./routes/add_building');
 var rooms = require('./routes/rooms');
 var addroom = require('./routes/add_room');
-var l = require('./routes/login');
 
 var app = express();
 
@@ -27,6 +27,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('express-session')({
+  secret: 'aaasp18',
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.use('/', login);
 app.use('/home', home);
@@ -35,7 +40,6 @@ app.use('/buildings', buildings);
 app.use('/addbuilding', addbuilding);
 app.use('/rooms', rooms);
 app.use('/addroom', addroom);
-app.use('/login', l);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

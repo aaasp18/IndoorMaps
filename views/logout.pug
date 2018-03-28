@@ -1,3 +1,5 @@
+include glogout
+
 .dropdown1
       span#name
         | AAA
@@ -5,4 +7,4 @@
       button#demo-menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
         i.material-icons more_vert
       ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect(for="demo-menu-lower-right")
-        li.mdl-menu__item(onclick="location.href='{{url_for('auth.logout')}}'") Logout
+        li.mdl-menu__item(onclick="signOut()") Logout
